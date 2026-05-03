@@ -11,9 +11,15 @@ import Certificates from "./components/Certificates.jsx";
 // import Blogs from "./components/Blogs.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
+import EntryIntro from "./components/EntryIntro.jsx";
 
 export default function App() {
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
+  const [showIntro, setShowIntro] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return window.sessionStorage.getItem("portfolioIntroSeen") !== "true";
+  });
+  const [introLeaving, setIntroLeaving] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -31,9 +37,37 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!showIntro) return undefined;
+
+    document.body.classList.add("intro-active");
+    const timer = window.setTimeout(() => {
+      completeIntro();
+    }, 10000);
+
+    return () => {
+      window.clearTimeout(timer);
+      document.body.classList.remove("intro-active");
+    };
+  }, [showIntro]);
+
+  const completeIntro = () => {
+    setIntroLeaving(true);
+    window.sessionStorage.setItem("portfolioIntroSeen", "true");
+
+    window.setTimeout(() => {
+      setShowIntro(false);
+      setIntroLeaving(false);
+      document.body.classList.remove("intro-active");
+    }, 820);
+  };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-ink text-white">
       <div className="live-backdrop" aria-hidden="true" />
+      {showIntro && (
+        <EntryIntro data={portfolio.hero} onEnter={completeIntro} isLeaving={introLeaving} />
+      )}
       <Header />
       <main className="relative z-10">
         <Hero data={portfolio.hero} />
