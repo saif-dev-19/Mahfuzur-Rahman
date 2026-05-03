@@ -145,7 +145,7 @@ function mapSkills(groups) {
       title: group.title,
       groups: [
         {
-          label: "Skills",
+          label: group.label || group.category || group.title || "Skills",
           skills: (Array.isArray(group.skills) ? group.skills : []).map((skill) => ({
             name: skill.name,
             icon: skill.icon_name || "code",

@@ -1,6 +1,7 @@
 import { fallbackPortfolio } from "../api/portfolioApi.js";
 import ScrollReveal from "./ScrollReveal.jsx";
 import KineticWords from "./KineticWords.jsx";
+import TerminalWidget from "./TerminalWidget.jsx";
 
 export default function Hero({ data = fallbackPortfolio.hero }) {
   return (
@@ -13,34 +14,34 @@ export default function Hero({ data = fallbackPortfolio.hero }) {
           </h1>
         </ScrollReveal>
 
-        <div className="scene-3d grid items-center gap-10 lg:grid-cols-[360px_1fr_220px] xl:gap-20">
+        <div className="scene-3d grid items-center gap-10 lg:grid-cols-[330px_1fr_220px] xl:gap-20">
           <ScrollReveal
             as="aside"
             variant="left"
-            className="hero-scan motion-card card-3d float-soft rounded-bl-[150px] rounded-br-[150px] rounded-tl-[150px] border-4 border-white bg-ink/95 p-6 shadow-glow md:p-8"
+            className="hero-scan motion-card card-3d tilt-3d float-soft rounded-[42px] rounded-tl-[110px] border-2 border-white/85 bg-ink/95 p-5 shadow-glow md:p-6"
           >
-            <div className="flex flex-col items-center gap-4 text-center">
+            <div className="flex flex-col items-center gap-3 text-center">
               <div className="lift-3d relative">
-                <span className="absolute -inset-2 rounded-full border border-brand/60" />
-                <img src={data.image} alt="Profile" className="relative h-24 w-24 rounded-full object-cover" />
+                <span className="absolute -inset-2 rounded-full border border-brand/60 shadow-[0_0_24px_rgba(18,247,214,0.24)]" />
+                <img src={data.image} alt="Profile" className="relative h-32 w-32 rounded-full object-cover md:h-36 md:w-36" />
               </div>
               <div>
-                <h2 className="font-mono text-3xl font-medium">{data.name}</h2>
+                <h2 className="font-mono text-2xl font-medium leading-tight md:text-3xl">{data.name}</h2>
                 <p className="font-ubuntu text-md">{data.role}</p>
               </div>
             </div>
 
-            <dl className="mt-8 space-y-3 font-mono text-sm text-white">
+            <dl className="mt-6 space-y-2.5 font-mono text-sm text-white">
               {data.info.map((item) => (
                 <Info key={item.label} label={item.label} value={item.value} />
               ))}
             </dl>
 
-            <a href={data.cvUrl} className="button-3d mt-7 inline-flex items-center rounded-full bg-white px-5 py-3 font-ubuntu text-sm text-night transition hover:bg-brand">
+            <a href={data.cvUrl} className="magnetic button-3d mt-6 inline-flex items-center rounded-full bg-white px-5 py-3 font-ubuntu text-sm text-night transition hover:bg-brand">
               Download CV ↓
             </a>
 
-            <div className="mt-7 border-t border-white/15 pt-6">
+            <div className="mt-6 border-t border-white/15 pt-5">
               <p className="text-center font-mono text-xs uppercase tracking-widest text-brand">Essential Links</p>
               <div className="mt-4 flex justify-center gap-3">
                 {data.essentialLinks.map((link) => (
@@ -79,7 +80,9 @@ export default function Hero({ data = fallbackPortfolio.hero }) {
               <p className="text-brand">&lt;/p&gt;</p>
             </div>
 
-            <a href="#contact" className="group mt-8 inline-flex items-center gap-4 font-mono text-2xl capitalize text-brand transition hover:text-mint">
+            <TerminalWidget />
+
+            <a href="#contact" className="magnetic group mt-8 inline-flex items-center gap-4 font-mono text-2xl capitalize text-brand transition hover:text-mint">
               Let&apos;s Talk
               <span className="grid h-9 w-9 place-items-center rounded-full bg-steel text-lg text-brand transition group-hover:-translate-y-1 group-hover:bg-brand group-hover:text-ink">✉</span>
             </a>
@@ -88,7 +91,7 @@ export default function Hero({ data = fallbackPortfolio.hero }) {
           <ScrollReveal
             variant="right"
             delay={220}
-            className="card-3d card-3d--right marquee-surface mx-auto flex w-full max-w-xs flex-col gap-8 rounded-[80px] border border-white/10 bg-night/90 px-8 py-10 shadow-glow backdrop-blur"
+            className="card-3d card-3d--right tilt-3d marquee-surface mx-auto flex w-full max-w-xs flex-col gap-8 rounded-[80px] border border-white/10 bg-night/90 px-8 py-10 shadow-glow backdrop-blur"
           >
             {data.stats.map((stat, index) => (
               <div key={stat.label} className="group flex items-center gap-4">
@@ -124,7 +127,7 @@ function EssentialLink({ link }) {
       title={link.label}
       target={link.href !== "#" ? "_blank" : undefined}
       rel={link.href !== "#" ? "noreferrer" : undefined}
-      className="grid h-10 w-10 place-items-center rounded-full bg-white transition hover:-translate-y-0.5 hover:bg-mint"
+      className="magnetic grid h-10 w-10 place-items-center rounded-full bg-white transition hover:-translate-y-0.5 hover:bg-mint"
     >
       <EssentialIcon icon={link.icon} color={link.color} />
     </a>

@@ -53,11 +53,15 @@ export default function Projects({ data = fallbackPortfolio.projects }) {
               key={`${project.title}-${index}`}
               delay={index * 90}
               variant="scale"
-              className="motion-card card-3d flex w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-br-[28px] rounded-tl-[28px] border border-white/10 bg-ink/95 shadow-glow sm:w-[330px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]"
+              className="project-preview motion-card card-3d tilt-3d flex w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-br-[28px] rounded-tl-[28px] border border-white/10 bg-ink/95 shadow-glow sm:w-[330px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]"
             >
               <div className="bg-night/80 p-3">
                 <div className="media-3d grid h-40 place-items-center overflow-hidden rounded-tl-[20px] border border-white/10 bg-white/5 md:h-44">
-                  <img src={project.image} alt={project.title} className="h-full w-full object-cover object-top transition duration-700 hover:scale-105" />
+                  <img src={project.image} alt={project.title} className="project-preview__image h-full w-full object-cover object-top" />
+                  <div className="project-preview__overlay">
+                    <span>Preview</span>
+                    <span>↗</span>
+                  </div>
                 </div>
               </div>
 
@@ -79,7 +83,7 @@ export default function Projects({ data = fallbackPortfolio.projects }) {
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
-                    className="button-3d rounded-full border border-brand bg-brand px-4 py-2.5 text-center font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
+                    className="magnetic button-3d rounded-full border border-brand bg-brand px-4 py-2.5 text-center font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
                   >
                     Details
                   </button>
@@ -155,7 +159,7 @@ function ProjectLink({ href, label }) {
   return (
     <a
       href={href || "#"}
-      className="rounded-full border border-brand px-4 py-3 text-center font-ubuntu text-sm capitalize text-white transition hover:bg-brand hover:text-ink"
+      className="magnetic rounded-full border border-brand px-4 py-3 text-center font-ubuntu text-sm capitalize text-white transition hover:bg-brand hover:text-ink"
       target={href && href !== "#" ? "_blank" : undefined}
       rel={href && href !== "#" ? "noreferrer" : undefined}
     >

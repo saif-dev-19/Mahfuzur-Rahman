@@ -47,7 +47,7 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
           aria-label="Certificate list"
         >
           {data.items.map((certificate, index) => (
-            <article key={`${certificate.name}-${certificate.credentialId || "certificate"}-${index}`} className="card-3d w-[82vw] shrink-0 snap-start overflow-hidden rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-night sm:w-[320px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]">
+            <article key={`${certificate.name}-${certificate.credentialId || "certificate"}-${index}`} className="card-3d tilt-3d w-[82vw] shrink-0 snap-start overflow-hidden rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-night sm:w-[320px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]">
               <div className="bg-ink p-3">
                 <img src={certificate.image} alt={`${certificate.name} certificate`} className="media-3d aspect-[16/9] w-full rounded-lg object-cover" />
               </div>
@@ -74,7 +74,7 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
               <button
                 type="button"
                 onClick={() => setSelectedCertificate(certificate)}
-                className="button-3d mt-5 rounded-full bg-brand px-5 py-2.5 font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
+                className="magnetic button-3d mt-5 rounded-full bg-brand px-5 py-2.5 font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
               >
                 Details
               </button>
@@ -100,7 +100,7 @@ function CertificateDetails({ certificate, onClose }) {
           <button
             type="button"
             onClick={onClose}
-            className="grid h-11 w-11 place-items-center rounded-lg bg-steel text-3xl leading-none text-brand transition hover:bg-brand hover:text-ink"
+            className="magnetic grid h-11 w-11 place-items-center rounded-lg bg-steel text-3xl leading-none text-brand transition hover:bg-brand hover:text-ink"
             aria-label="Close certificate details"
           >
             ×
@@ -139,7 +139,7 @@ function CertificateDetails({ certificate, onClose }) {
             href={certificate.verifyUrl || "#"}
             target={certificate.verifyUrl && certificate.verifyUrl !== "#" ? "_blank" : undefined}
             rel={certificate.verifyUrl && certificate.verifyUrl !== "#" ? "noreferrer" : undefined}
-            className="mt-8 inline-flex rounded-lg bg-brand px-7 py-4 font-ubuntu text-base font-medium text-ink transition hover:bg-mint"
+            className="magnetic mt-8 inline-flex rounded-lg bg-brand px-7 py-4 font-ubuntu text-base font-medium text-ink transition hover:bg-mint"
           >
             Verify Certificate
           </a>

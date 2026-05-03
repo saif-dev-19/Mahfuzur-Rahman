@@ -22,9 +22,9 @@ export default function About({ data = fallbackPortfolio.about }) {
           </article>
         </ScrollReveal>
 
-        <ScrollReveal variant="right" delay={140} className="card-3d card-3d--right relative mx-auto w-full max-w-xl rounded-2xl border border-white/10">
-          <div className="noise-layer media-3d overflow-hidden rounded-2xl border border-white/10 shadow-glow">
-            <img src={data.image} alt="Developer workspace" className="aspect-[1.02] w-full object-cover transition duration-700 hover:scale-105" />
+        <ScrollReveal variant="right" delay={140} className="relative mx-auto w-full max-w-md">
+          <div className="noise-layer card-3d card-3d--right media-3d overflow-hidden rounded-2xl border border-brand/70 bg-night shadow-glow">
+            <img src={data.image} alt="Mahfuzur Rahman Saif" className="aspect-[4/5] w-full object-cover object-top transition duration-700 hover:scale-105" />
           </div>
           <div className="absolute -bottom-6 -left-6 hidden h-28 w-28 rounded-full border-2 border-brand md:block" />
           <div className="absolute -right-5 top-10 hidden h-20 w-20 rounded-full border border-amber-300/50 md:block" />

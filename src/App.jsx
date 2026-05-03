@@ -13,6 +13,7 @@ import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import EntryIntro from "./components/EntryIntro.jsx";
 import CodeFlowBackground from "./components/CodeFlowBackground.jsx";
+import InteractionLayer from "./components/InteractionLayer.jsx";
 
 export default function App() {
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
@@ -67,6 +68,7 @@ export default function App() {
     <div className="relative min-h-screen overflow-hidden bg-ink text-white">
       <div className="live-backdrop" aria-hidden="true" />
       <CodeFlowBackground />
+      <InteractionLayer />
       {showIntro && (
         <EntryIntro data={portfolio.hero} onEnter={completeIntro} isLeaving={introLeaving} />
       )}
@@ -75,8 +77,8 @@ export default function App() {
         <Hero data={portfolio.hero} />
         <About data={portfolio.about} />
         <Experience data={portfolio.experience} />
+         <Education data={portfolio.education} />
         <Skills data={portfolio.skills} />
-        <Education data={portfolio.education} />
         <Projects data={portfolio.projects} />
         <Certificates data={portfolio.certificates} />
         {/* <Blogs /> */}

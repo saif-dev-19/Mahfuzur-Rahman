@@ -1,17 +1,58 @@
+import { useEffect, useMemo, useState } from "react";
 import SectionTitle from "./SectionTitle.jsx";
 import { fallbackPortfolio } from "../api/portfolioApi.js";
 import { assets } from "../data/portfolio.js";
 import ScrollReveal from "./ScrollReveal.jsx";
 
 export default function Skills({ data = fallbackPortfolio.skills }) {
+  const [activeFilter, setActiveFilter] = useState("All");
+  const filters = useMemo(() => {
+    const labels = data.categories.flatMap((category) => [
+      category.title,
+      ...category.groups.map((group) => group.label),
+    ]);
+    const meaningfulLabels = labels.filter((label) => label && label !== "Skills");
+    return ["All", ...Array.from(new Set(meaningfulLabels))];
+  }, [data.categories]);
+
+  useEffect(() => {
+    if (!filters.includes(activeFilter)) setActiveFilter("All");
+  }, [activeFilter, filters]);
+
+  const visibleCategories = data.categories
+    .map((category) => ({
+      ...category,
+      groups: activeFilter === "All"
+        ? category.groups
+        : category.groups.filter((group) => category.title === activeFilter || group.label === activeFilter),
+    }))
+    .filter((category) => category.groups.length > 0);
+
   return (
     <section id="skills" className="relative bg-ink/78 section-pad">
       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url(${assets.skillsBg})`, backgroundSize: "cover" }} />
       <div className="container-shell relative">
         <SectionTitle title={data.title}>{data.description}</SectionTitle>
 
+        <div className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-2">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => setActiveFilter(filter)}
+              className={`magnetic rounded-full border px-4 py-2 font-mono text-xs transition ${
+                activeFilter === filter
+                  ? "border-brand bg-brand text-ink"
+                  : "border-white/10 bg-night/70 text-white hover:border-brand hover:text-brand"
+              }`}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+
         <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-10 text-center md:gap-12">
-          {data.categories.map((category, categoryIndex) => (
+          {visibleCategories.map((category, categoryIndex) => (
             <ScrollReveal as="article" key={category.title} delay={categoryIndex * 120}>
               <CategoryTitle>{category.title}</CategoryTitle>
 
@@ -46,7 +87,7 @@ function SkillBadge({ skill, delay = 0 }) {
 
   return (
     <div
-      className="motion-card card-3d flex h-10 items-center gap-2 rounded-full bg-white px-4 text-night shadow-[0_8px_18px_rgba(0,0,0,0.25)] hover:bg-mint md:h-11"
+      className="motion-card card-3d tilt-3d flex h-10 items-center gap-2 rounded-full bg-white px-4 text-night shadow-[0_8px_18px_rgba(0,0,0,0.25)] hover:bg-mint md:h-11"
       style={{ transitionDelay: `${delay}ms` }}
     >
       <span className="grid h-6 w-6 shrink-0 place-items-center overflow-hidden rounded-full">
