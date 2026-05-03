@@ -7,8 +7,8 @@ export default function TimelineSection({ id, title, description, eyebrow, items
       <div className="container-shell">
         <SectionTitle title={title}>{description}</SectionTitle>
 
-        <div className="mx-auto mt-12 max-w-5xl">
-          <ScrollReveal className="relative rounded-[40px] border border-white/10 bg-night/70 p-6 shadow-glow md:p-10">
+        <div className="scene-3d mx-auto mt-12 max-w-5xl">
+          <ScrollReveal className="card-3d relative rounded-[40px] border border-white/10 bg-night/70 p-6 shadow-glow md:p-10">
             <div className="mb-7 flex items-center justify-between gap-6">
               <div>
                 <p className="font-mono text-sm uppercase tracking-widest text-brand">{eyebrow}</p>
@@ -32,7 +32,7 @@ export default function TimelineSection({ id, title, description, eyebrow, items
                     <span className="h-2.5 w-2.5 rounded-full bg-brand pulse-dot" />
                   </span>
 
-                  <div className="motion-card rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-ink p-5 transition duration-300 hover:-translate-y-1 hover:border-brand/70">
+                  <div className="motion-card card-3d card-3d--right rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-ink p-5">
                     <p className="font-mono text-sm text-brand">{item.period}</p>
                     <h4 className="mt-2 font-ubuntu text-2xl leading-tight text-white md:text-3xl">
                       {getTitle(item, variant)}
@@ -42,7 +42,7 @@ export default function TimelineSection({ id, title, description, eyebrow, items
 
                     <div className="mt-4 flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
-                        <span key={tag} className="rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
+                        <span key={tag} className="chip-3d rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
                           {tag}
                         </span>
                       ))}

@@ -273,6 +273,93 @@ textarea {
   opacity: 1;
 }
 
+.scene-3d {
+  perspective: 1200px;
+}
+
+.card-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition:
+    transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 420ms ease,
+    border-color 420ms ease;
+}
+
+.card-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 32%),
+    radial-gradient(circle at 20% 12%, rgba(18, 247, 214, 0.22), transparent 26rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 360ms ease;
+}
+
+.card-3d > * {
+  position: relative;
+  z-index: 2;
+}
+
+.card-3d:hover {
+  transform: rotateX(5deg) rotateY(-7deg) translateY(-8px);
+  border-color: rgba(18, 247, 214, 0.72);
+  box-shadow:
+    0 26px 70px rgba(0, 0, 0, 0.42),
+    18px 18px 0 rgba(18, 247, 214, 0.05),
+    0 0 38px rgba(18, 247, 214, 0.18);
+}
+
+.card-3d:hover::before {
+  opacity: 1;
+}
+
+.card-3d--right:hover {
+  transform: rotateX(5deg) rotateY(7deg) translateY(-8px);
+}
+
+.media-3d {
+  transform: translateZ(24px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.lift-3d {
+  transform: translateZ(34px);
+}
+
+.chip-3d {
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease;
+}
+
+.card-3d:hover .chip-3d {
+  transform: translateZ(32px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.button-3d {
+  box-shadow:
+    0 8px 0 rgba(9, 96, 85, 0.95),
+    0 18px 30px rgba(0, 0, 0, 0.24);
+  transform: translateZ(28px);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.button-3d:hover {
+  transform: translateZ(28px) translateY(3px);
+  box-shadow:
+    0 5px 0 rgba(9, 96, 85, 0.95),
+    0 14px 24px rgba(0, 0, 0, 0.2);
+}
+
 .float-soft {
   animation: float-soft 5.5s ease-in-out infinite;
 }
@@ -298,6 +385,36 @@ textarea {
   background: #12f7d6;
   vertical-align: -0.12em;
   animation: caret-blink 1s steps(1) infinite;
+}
+
+.hero-headline {
+  perspective: 900px;
+}
+
+.hero-line {
+  display: block;
+  width: fit-content;
+  transform-origin: left center;
+  animation: hero-line-float 5.5s ease-in-out infinite;
+}
+
+.hero-line:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+.hero-line:nth-child(3) {
+  animation-delay: 360ms;
+}
+
+.hero-line .kinetic-word {
+  animation:
+    hero-word-pop 820ms cubic-bezier(0.2, 0.9, 0.2, 1) both,
+    word-shimmer 4.8s ease-in-out infinite,
+    hero-word-breathe 3.8s ease-in-out infinite;
+  animation-delay:
+    calc(160ms + (var(--word-index) * 95ms)),
+    calc(1300ms + (var(--word-index) * 180ms)),
+    calc(2100ms + (var(--word-index) * 140ms));
 }
 
 .kinetic-words {
@@ -805,6 +922,39 @@ textarea {
     opacity: 1;
     transform: translateY(0) rotateX(0);
     filter: blur(0);
+  }
+}
+
+@keyframes hero-word-pop {
+  from {
+    opacity: 0;
+    transform: translateY(0.7em) rotateX(58deg) scale(0.94);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes hero-line-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0.12em, -0.05em, 0);
+  }
+}
+
+@keyframes hero-word-breathe {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(18, 247, 214, 0);
+  }
+  48% {
+    text-shadow: 0 0 18px rgba(18, 247, 214, 0.24);
   }
 }
 

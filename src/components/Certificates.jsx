@@ -43,16 +43,16 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
 
         <div
           ref={scrollerRef}
-          className="project-scroll mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6"
+          className="project-scroll scene-3d mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-10 pt-2"
           aria-label="Certificate list"
         >
           {data.items.map((certificate, index) => (
-            <article key={`${certificate.name}-${certificate.credentialId || "certificate"}-${index}`} className="w-[82vw] shrink-0 snap-start overflow-hidden rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-night transition hover:border-brand/70 hover:shadow-glow sm:w-[320px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]">
+            <article key={`${certificate.name}-${certificate.credentialId || "certificate"}-${index}`} className="card-3d w-[82vw] shrink-0 snap-start overflow-hidden rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-night sm:w-[320px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]">
               <div className="bg-ink p-3">
-                <img src={certificate.image} alt={`${certificate.name} certificate`} className="aspect-[16/9] w-full rounded-lg object-cover" />
+                <img src={certificate.image} alt={`${certificate.name} certificate`} className="media-3d aspect-[16/9] w-full rounded-lg object-cover" />
               </div>
 
-              <div className="p-5">
+              <div className="lift-3d p-5">
               <div className="flex items-start justify-between gap-4">
                 <span className="rounded-full bg-brand px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-ink">
                   {certificate.period}
@@ -65,7 +65,7 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {certificate.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
+                  <span key={tag} className="chip-3d rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
                     {tag}
                   </span>
                 ))}
@@ -74,7 +74,7 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
               <button
                 type="button"
                 onClick={() => setSelectedCertificate(certificate)}
-                className="mt-5 rounded-full bg-brand px-5 py-2.5 font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
+                className="button-3d mt-5 rounded-full bg-brand px-5 py-2.5 font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
               >
                 Details
               </button>

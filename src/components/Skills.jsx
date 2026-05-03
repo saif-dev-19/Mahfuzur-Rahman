@@ -15,7 +15,7 @@ export default function Skills({ data = fallbackPortfolio.skills }) {
             <ScrollReveal as="article" key={category.title} delay={categoryIndex * 120}>
               <CategoryTitle>{category.title}</CategoryTitle>
 
-              <div className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-3 md:gap-4">
+              <div className="scene-3d mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-3 md:gap-4">
                 {category.groups.flatMap((group) => group.skills).map((skill, index) => (
                   <SkillBadge key={skill.name} skill={skill} delay={index * 24} />
                 ))}
@@ -46,7 +46,7 @@ function SkillBadge({ skill, delay = 0 }) {
 
   return (
     <div
-      className="motion-card flex h-10 items-center gap-2 rounded-full bg-white px-4 text-night shadow-[0_8px_18px_rgba(0,0,0,0.25)] transition duration-300 hover:-translate-y-1 hover:bg-mint md:h-11"
+      className="motion-card card-3d flex h-10 items-center gap-2 rounded-full bg-white px-4 text-night shadow-[0_8px_18px_rgba(0,0,0,0.25)] hover:bg-mint md:h-11"
       style={{ transitionDelay: `${delay}ms` }}
     >
       <span className="grid h-6 w-6 shrink-0 place-items-center overflow-hidden rounded-full">
