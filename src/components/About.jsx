@@ -5,7 +5,7 @@ export default function About({ data = fallbackPortfolio.about }) {
   const paragraphs = data.description.split("\n").filter(Boolean);
 
   return (
-    <section id="about" className="topography bg-night section-pad">
+    <section id="about" className="topography bg-night/80 section-pad">
       <div className="container-shell grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] xl:gap-24">
         <ScrollReveal variant="left">
           <div className="mb-12 inline-flex rounded-br-[32px] rounded-tl-[32px] border-2 border-brand bg-ink px-8 py-4">

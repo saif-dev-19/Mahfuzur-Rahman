@@ -18,15 +18,15 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
   };
 
   return (
-    <section id="certificates" className="bg-ink section-pad">
+    <section id="certificates" className="bg-ink/78 section-pad">
       <div className="container-shell">
         <SectionTitle title={data.title}>{data.description}</SectionTitle>
 
-        <div className="mt-16 flex items-center justify-end gap-4 md:mt-20">
+        <div className="mt-10 flex items-center justify-end gap-3 md:mt-12">
           <button
             type="button"
             onClick={() => scrollCertificates(-1)}
-            className="grid h-12 w-12 place-items-center rounded-full bg-night text-3xl text-brand transition hover:bg-steel md:h-16 md:w-16"
+            className="grid h-11 w-11 place-items-center rounded-full bg-night text-2xl text-brand transition hover:bg-steel md:h-12 md:w-12"
             aria-label="Previous certificates"
           >
             ‹
@@ -34,7 +34,7 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
           <button
             type="button"
             onClick={() => scrollCertificates(1)}
-            className="grid h-12 w-12 place-items-center rounded-full bg-night text-3xl text-brand transition hover:bg-steel md:h-16 md:w-16"
+            className="grid h-11 w-11 place-items-center rounded-full bg-night text-2xl text-brand transition hover:bg-steel md:h-12 md:w-12"
             aria-label="Next certificates"
           >
             ›
@@ -47,24 +47,23 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
           aria-label="Certificate list"
         >
           {data.items.map((certificate, index) => (
-            <article key={`${certificate.name}-${certificate.credentialId || "certificate"}-${index}`} className="w-[86vw] shrink-0 snap-start overflow-hidden rounded-br-[32px] rounded-tl-[32px] border border-white/10 bg-night transition hover:border-brand/70 hover:shadow-glow sm:w-[420px] md:w-[calc((100%_-_24px)/2)] xl:w-[calc((100%_-_48px)/3)]">
-              <div className="bg-ink p-4">
-                <img src={certificate.image} alt={`${certificate.name} certificate`} className="aspect-[16/10] w-full rounded-lg object-cover" />
+            <article key={`${certificate.name}-${certificate.credentialId || "certificate"}-${index}`} className="w-[82vw] shrink-0 snap-start overflow-hidden rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-night transition hover:border-brand/70 hover:shadow-glow sm:w-[320px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]">
+              <div className="bg-ink p-3">
+                <img src={certificate.image} alt={`${certificate.name} certificate`} className="aspect-[16/9] w-full rounded-lg object-cover" />
               </div>
 
-              <div className="p-7">
-              <div className="flex items-start justify-between gap-6">
-                <span className="rounded-full bg-brand px-4 py-1 font-mono text-xs uppercase tracking-widest text-ink">
+              <div className="p-5">
+              <div className="flex items-start justify-between gap-4">
+                <span className="rounded-full bg-brand px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-ink">
                   {certificate.period}
                 </span>
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-brand text-brand">✓</span>
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-brand text-brand">✓</span>
               </div>
 
-              <h3 className="mt-8 font-ubuntu text-2xl leading-tight text-white md:text-3xl">{certificate.name}</h3>
+              <h3 className="mt-5 font-ubuntu text-xl leading-tight text-white md:text-2xl">{certificate.name}</h3>
               <p className="mt-3 font-mono text-sm text-mint">{certificate.issuer}</p>
-              <p className="mt-5 font-ubuntu text-base leading-7 text-white/80">{certificate.description}</p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-4 flex flex-wrap gap-2">
                 {certificate.tags.map((tag) => (
                   <span key={tag} className="rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
                     {tag}
@@ -75,7 +74,7 @@ export default function Certificates({ data = fallbackPortfolio.certificates }) 
               <button
                 type="button"
                 onClick={() => setSelectedCertificate(certificate)}
-                className="mt-8 rounded-full bg-brand px-6 py-3 font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
+                className="mt-5 rounded-full bg-brand px-5 py-2.5 font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
               >
                 Details
               </button>

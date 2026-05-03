@@ -5,17 +5,17 @@ import ScrollReveal from "./ScrollReveal.jsx";
 
 export default function Skills({ data = fallbackPortfolio.skills }) {
   return (
-    <section id="skills" className="relative bg-ink section-pad">
+    <section id="skills" className="relative bg-ink/78 section-pad">
       <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url(${assets.skillsBg})`, backgroundSize: "cover" }} />
       <div className="container-shell relative">
         <SectionTitle title={data.title}>{data.description}</SectionTitle>
 
-        <div className="mx-auto mt-20 flex max-w-6xl flex-col gap-16 text-center md:gap-20">
+        <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-10 text-center md:gap-12">
           {data.categories.map((category, categoryIndex) => (
             <ScrollReveal as="article" key={category.title} delay={categoryIndex * 120}>
               <CategoryTitle>{category.title}</CategoryTitle>
 
-              <div className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-3 md:gap-4">
+              <div className="mx-auto mt-6 flex max-w-5xl flex-wrap justify-center gap-3 md:gap-4">
                 {category.groups.flatMap((group) => group.skills).map((skill, index) => (
                   <SkillBadge key={skill.name} skill={skill} delay={index * 24} />
                 ))}

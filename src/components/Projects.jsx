@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { fallbackPortfolio } from "../api/portfolioApi.js";
 import SectionTitle from "./SectionTitle.jsx";
-import { assets } from "../data/portfolio.js";
 import ScrollReveal from "./ScrollReveal.jsx";
 
 export default function Projects({ data = fallbackPortfolio.projects }) {
@@ -20,16 +19,15 @@ export default function Projects({ data = fallbackPortfolio.projects }) {
   };
 
   return (
-    <section id="projects" className="relative bg-night section-pad">
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url(${assets.worksBg})`, backgroundSize: "560px" }} />
+    <section id="projects" className="relative bg-night/82 section-pad">
       <div className="container-shell relative">
         <SectionTitle title={data.title}>{data.description}</SectionTitle>
 
-        <ScrollReveal className="mt-16 flex items-center justify-end gap-4 md:mt-20" delay={120}>
+        <ScrollReveal className="mt-10 flex items-center justify-end gap-3 md:mt-12" delay={120}>
           <button
             type="button"
             onClick={() => scrollProjects(-1)}
-            className="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-ink text-3xl text-brand transition hover:-translate-x-1 hover:bg-steel md:h-16 md:w-16"
+            className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-ink text-2xl text-brand transition hover:-translate-x-1 hover:bg-steel md:h-12 md:w-12"
             aria-label="Previous projects"
           >
             ‹
@@ -37,7 +35,7 @@ export default function Projects({ data = fallbackPortfolio.projects }) {
           <button
             type="button"
             onClick={() => scrollProjects(1)}
-            className="grid h-12 w-12 place-items-center rounded-full border border-white/10 bg-ink text-3xl text-brand transition hover:translate-x-1 hover:bg-steel md:h-16 md:w-16"
+            className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-ink text-2xl text-brand transition hover:translate-x-1 hover:bg-steel md:h-12 md:w-12"
             aria-label="Next projects"
           >
             ›
@@ -55,24 +53,21 @@ export default function Projects({ data = fallbackPortfolio.projects }) {
               key={`${project.title}-${index}`}
               delay={index * 90}
               variant="scale"
-              className="motion-card flex min-h-[620px] w-[86vw] shrink-0 snap-start flex-col overflow-hidden rounded-br-[40px] rounded-tl-[40px] border border-white/10 bg-ink/95 shadow-glow transition duration-300 hover:-translate-y-2 hover:border-brand/70 sm:w-[420px] md:w-[calc((100%_-_24px)/2)] xl:w-[calc((100%_-_48px)/3)]"
+              className="motion-card flex w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-br-[28px] rounded-tl-[28px] border border-white/10 bg-ink/95 shadow-glow transition duration-300 hover:-translate-y-2 hover:border-brand/70 sm:w-[330px] md:w-[calc((100%_-_48px)/3)] xl:w-[calc((100%_-_72px)/4)]"
             >
-              <div className="bg-night/80 p-4">
-                <div className="grid h-64 place-items-center overflow-hidden rounded-tl-[28px] border border-white/10 bg-white/5">
+              <div className="bg-night/80 p-3">
+                <div className="grid h-40 place-items-center overflow-hidden rounded-tl-[20px] border border-white/10 bg-white/5 md:h-44">
                   <img src={project.image} alt={project.title} className="h-full w-full object-cover object-top transition duration-700 hover:scale-105" />
                 </div>
               </div>
 
-              <div className="flex flex-1 flex-col p-6">
+              <div className="flex flex-1 flex-col p-5">
                 <div>
-                  <p className="font-mono text-sm text-brand">{project.category || "Project"}</p>
-                  <h3 className="mt-3 font-ubuntu text-2xl leading-tight text-white md:text-3xl">{project.title}</h3>
-                  <p className="mt-4 line-clamp-4 min-h-28 font-ubuntu text-base leading-7 text-white/80">
-                    {project.description}
-                  </p>
+                  <p className="font-mono text-xs text-brand">{project.category || "Project"}</p>
+                  <h3 className="mt-2 font-ubuntu text-xl leading-tight text-white md:text-2xl">{project.title}</h3>
                 </div>
 
-                <div className="mt-6 flex flex-wrap gap-3">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.slice(0, 4).map((tag) => (
                     <span key={tag} className="rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
                       {tag}
@@ -80,15 +75,15 @@ export default function Projects({ data = fallbackPortfolio.projects }) {
                   ))}
                 </div>
 
-                <div className="mt-auto grid gap-3 pt-8">
+                <div className="mt-auto grid gap-2 pt-5">
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
-                    className="rounded-full border border-brand bg-brand px-5 py-3 text-center font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
+                    className="rounded-full border border-brand bg-brand px-4 py-2.5 text-center font-ubuntu text-sm capitalize text-ink transition hover:bg-mint"
                   >
                     Details
                   </button>
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-2 sm:grid-cols-2">
                     <ProjectLink href={project.githubUrl} label="Github" />
                     <ProjectLink href={project.liveUrl} label="Live Demo" />
                   </div>

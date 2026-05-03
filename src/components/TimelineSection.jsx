@@ -3,13 +3,13 @@ import ScrollReveal from "./ScrollReveal.jsx";
 
 export default function TimelineSection({ id, title, description, eyebrow, items, variant = "role", dark = false }) {
   return (
-    <section id={id} className={`${dark ? "bg-night" : "bg-ink"} section-pad`}>
+    <section id={id} className={`${dark ? "bg-night/82" : "bg-ink/78"} section-pad`}>
       <div className="container-shell">
         <SectionTitle title={title}>{description}</SectionTitle>
 
-        <div className="mx-auto mt-20 max-w-5xl">
+        <div className="mx-auto mt-12 max-w-5xl">
           <ScrollReveal className="relative rounded-[40px] border border-white/10 bg-night/70 p-6 shadow-glow md:p-10">
-            <div className="mb-10 flex items-center justify-between gap-6">
+            <div className="mb-7 flex items-center justify-between gap-6">
               <div>
                 <p className="font-mono text-sm uppercase tracking-widest text-brand">{eyebrow}</p>
                 <h3 className="mt-2 font-ubuntu text-3xl text-white md:text-4xl">{title}</h3>
@@ -19,7 +19,7 @@ export default function TimelineSection({ id, title, description, eyebrow, items
               </span>
             </div>
 
-            <div className="relative space-y-8 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-brand/40">
+            <div className="relative space-y-5 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-brand/40">
               {items.map((item, index) => (
                 <ScrollReveal
                   as="article"
@@ -32,15 +32,15 @@ export default function TimelineSection({ id, title, description, eyebrow, items
                     <span className="h-2.5 w-2.5 rounded-full bg-brand pulse-dot" />
                   </span>
 
-                  <div className="motion-card rounded-br-[32px] rounded-tl-[32px] border border-white/10 bg-ink p-6 transition duration-300 hover:-translate-y-1 hover:border-brand/70">
+                  <div className="motion-card rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-ink p-5 transition duration-300 hover:-translate-y-1 hover:border-brand/70">
                     <p className="font-mono text-sm text-brand">{item.period}</p>
                     <h4 className="mt-2 font-ubuntu text-2xl leading-tight text-white md:text-3xl">
                       {getTitle(item, variant)}
                     </h4>
                     <p className="mt-2 font-mono text-sm text-mint">{getMeta(item, variant)}</p>
-                    <p className="mt-5 font-ubuntu text-base leading-7 text-white/80">{item.description}</p>
+                    <p className="mt-4 font-ubuntu text-sm leading-6 text-white/80 md:text-base">{item.description}</p>
 
-                    <div className="mt-6 flex flex-wrap gap-3">
+                    <div className="mt-4 flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
                         <span key={tag} className="rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
                           {tag}

@@ -1,14 +1,15 @@
 import { fallbackPortfolio } from "../api/portfolioApi.js";
 import ScrollReveal from "./ScrollReveal.jsx";
+import KineticWords from "./KineticWords.jsx";
 
 export default function Hero({ data = fallbackPortfolio.hero }) {
   return (
-    <section id="home" className="relative overflow-hidden bg-ink/80 pb-16 md:pb-32">
+    <section id="home" className="relative overflow-hidden bg-ink/55 pb-12 md:pb-20">
       <div className="absolute left-1/2 top-28 h-48 w-[70vw] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl" aria-hidden="true" />
       <div className="container-shell">
         <ScrollReveal>
-          <h1 className="mb-10 text-center font-ubuntu text-5xl leading-tight text-mint md:mb-16 md:text-7xl">
-            Developer
+          <h1 className="mb-8 text-center font-ubuntu text-5xl leading-tight text-mint md:mb-10 md:text-7xl">
+            <KineticWords text="Developer" />
           </h1>
         </ScrollReveal>
 
@@ -55,16 +56,16 @@ export default function Hero({ data = fallbackPortfolio.hero }) {
               <p className="font-ubuntu text-3xl font-light leading-tight md:text-6xl">
                 Hey
                 <br />
-                I&apos;m <span className="text-brand">{data.headlineName}</span>,
+                I&apos;m <span className="text-brand"><KineticWords text={data.headlineName} /></span>,
                 <br />
-                <span className="type-caret">{data.headlineRole}</span>
+                <span className="type-caret"><KineticWords text={data.headlineRole} /></span>
               </p>
             </div>
             <p className="font-mono text-sm text-brand">&lt;/h1&gt;</p>
 
             <div className="mt-8 max-w-2xl font-mono text-sm leading-7 text-white/80 md:text-base">
               <p className="text-brand">&lt;p&gt;</p>
-              <p className="pl-4 md:pl-8">
+              <p className="flow-copy pl-4 md:pl-8">
                 {data.description}
               </p>
               <p className="text-brand">&lt;/p&gt;</p>

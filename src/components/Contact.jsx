@@ -30,20 +30,20 @@ export default function Contact({ data = fallbackPortfolio.contact }) {
   };
 
   return (
-    <section id="contact" className="bg-night section-pad">
+    <section id="contact" className="bg-night/82 section-pad">
       <div className="container-shell">
         <SectionTitle title={data.title}>{data.description}</SectionTitle>
 
         <ScrollReveal
           as="form"
           onSubmit={handleSubmit}
-          className="mx-auto mt-20 flex max-w-5xl flex-col items-center gap-14"
+          className="mx-auto mt-12 flex max-w-5xl flex-col items-center gap-10"
         >
           <div className="rounded-br-[32px] rounded-tl-[32px] border-2 border-brand px-8 py-4 text-center">
             <h3 className="font-mono text-2xl font-medium capitalize text-brand md:text-3xl">Send me a message</h3>
           </div>
 
-          <div className="grid w-full gap-12 md:grid-cols-2 md:gap-24">
+          <div className="grid w-full gap-8 md:grid-cols-2 md:gap-16">
             <Field
               label="Your name *"
               name="name"

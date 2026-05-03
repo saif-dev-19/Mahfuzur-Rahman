@@ -12,6 +12,7 @@ import Certificates from "./components/Certificates.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import EntryIntro from "./components/EntryIntro.jsx";
+import CodeFlowBackground from "./components/CodeFlowBackground.jsx";
 
 export default function App() {
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
@@ -65,6 +66,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-ink text-white">
       <div className="live-backdrop" aria-hidden="true" />
+      <CodeFlowBackground />
       {showIntro && (
         <EntryIntro data={portfolio.hero} onEnter={completeIntro} isLeaving={introLeaving} />
       )}
