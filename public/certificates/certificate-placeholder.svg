@@ -1,0 +1,15 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="22" fill="#F8F5EA"/>
+  <rect x="44" y="42" width="1112" height="676" rx="18" stroke="#D9A619" stroke-width="6"/>
+  <rect x="135" y="42" width="116" height="170" fill="#1D4ED8"/>
+  <path d="M135 42H251V212L193 166L135 212V42Z" fill="#153E91"/>
+  <circle cx="600" cy="380" r="210" fill="#E8E3D2" opacity="0.42"/>
+  <text x="600" y="244" text-anchor="middle" fill="#292F36" font-family="Ubuntu, Arial, sans-serif" font-size="30" font-weight="700">Certificate of Completion</text>
+  <text x="600" y="322" text-anchor="middle" fill="#292F36" font-family="Ubuntu, Arial, sans-serif" font-size="46" font-weight="700">Portfolio Certificate</text>
+  <text x="600" y="380" text-anchor="middle" fill="#43454D" font-family="IBM Plex Mono, monospace" font-size="22">Issued for successfully completing the course</text>
+  <line x1="360" y1="500" x2="520" y2="500" stroke="#292F36" stroke-width="2"/>
+  <line x1="680" y1="500" x2="840" y2="500" stroke="#292F36" stroke-width="2"/>
+  <text x="440" y="540" text-anchor="middle" fill="#292F36" font-family="Ubuntu, Arial, sans-serif" font-size="22" font-weight="700">Issuer</text>
+  <text x="760" y="540" text-anchor="middle" fill="#292F36" font-family="Ubuntu, Arial, sans-serif" font-size="22" font-weight="700">Student</text>
+  <text x="600" y="644" text-anchor="middle" fill="#43454D" font-family="IBM Plex Mono, monospace" font-size="18">Replace this image with your real certificate screenshot</text>
+</svg>
