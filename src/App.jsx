@@ -14,6 +14,7 @@ import Footer from "./components/Footer.jsx";
 import EntryIntro from "./components/EntryIntro.jsx";
 import CodeFlowBackground from "./components/CodeFlowBackground.jsx";
 import InteractionLayer from "./components/InteractionLayer.jsx";
+import ScrollJumpControls from "./components/ScrollJumpControls.jsx";
 
 export default function App() {
   const [portfolio, setPortfolio] = useState(fallbackPortfolio);
@@ -69,6 +70,7 @@ export default function App() {
       <div className="live-backdrop" aria-hidden="true" />
       <CodeFlowBackground />
       <InteractionLayer />
+      <ScrollJumpControls />
       {showIntro && (
         <EntryIntro data={portfolio.hero} onEnter={completeIntro} isLeaving={introLeaving} />
       )}

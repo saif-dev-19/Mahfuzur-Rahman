@@ -133,6 +133,36 @@ textarea {
   backdrop-filter: blur(10px);
 }
 
+.scroll-jump-controls {
+  position: fixed;
+  right: clamp(1rem, 2vw, 1.5rem);
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  z-index: 70;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.scroll-jump-controls button {
+  display: grid;
+  width: 2.85rem;
+  height: 2.85rem;
+  place-items: center;
+  border: 1px solid rgba(18, 247, 214, 0.52);
+  border-radius: 999px;
+  background: rgba(26, 30, 35, 0.78);
+  color: #12f7d6;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28), 0 0 24px rgba(18, 247, 214, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.scroll-jump-controls button:hover {
+  background: #12f7d6;
+  color: #1a1e23;
+}
+
 .live-backdrop::before {
   background-image:
     linear-gradient(rgba(18, 247, 214, 0.055) 1px, transparent 1px),
