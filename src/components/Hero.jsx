@@ -10,7 +10,7 @@ export default function Hero({ data = fallbackPortfolio.hero }) {
       <div className="container-shell">
         <ScrollReveal>
           <h1 className="mb-8 text-center font-ubuntu text-5xl leading-tight text-mint md:mb-10 md:text-7xl">
-            <KineticWords text="Developer" />
+            <KineticWords text="" />
           </h1>
         </ScrollReveal>
 
