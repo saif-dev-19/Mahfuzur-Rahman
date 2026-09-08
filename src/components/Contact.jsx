@@ -30,50 +30,79 @@ export default function Contact({ data = fallbackPortfolio.contact }) {
   };
 
   return (
-    <section id="contact" className="bg-night/82 section-pad">
+    <section id="contact" className="bg-ink section-pad">
       <div className="container-shell">
         <SectionTitle title={data.title}>{data.description}</SectionTitle>
 
         <ScrollReveal
-          as="form"
-          onSubmit={handleSubmit}
-          className="mx-auto mt-12 flex max-w-5xl flex-col items-center gap-10"
+          as="div"
+          className="mx-auto mt-12 max-w-2xl"
+          delay={100}
         >
-          <div className="rounded-br-[32px] rounded-tl-[32px] border-2 border-brand px-8 py-4 text-center">
-            <h3 className="font-mono text-2xl font-medium capitalize text-brand md:text-3xl">Send me a message</h3>
-          </div>
-
-          <div className="grid w-full gap-8 md:grid-cols-2 md:gap-16">
-            <Field
-              label="Your name *"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-            />
-            <Field
-              label="Your email *"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              type="email"
-            />
-            <div className="md:col-span-2">
-              <Field
-                label="Your message *"
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Enter your needs"
-                textarea
-              />
+          <div className="card-clean p-6 sm:p-10 border border-white/10">
+            <div className="mb-8">
+              <span className="font-mono text-xs uppercase tracking-wider text-brand font-semibold">
+                Get In Touch
+              </span>
+              <h3 className="mt-1 font-ubuntu text-2xl sm:text-3xl font-bold text-white">
+                Send me a message
+              </h3>
+              <p className="mt-2 font-ubuntu text-sm sm:text-base text-slate-300">
+                Have a question, project proposal, or just want to say hi? Fill out the form below.
+              </p>
             </div>
-          </div>
 
-          <button type="submit" className="motion-card inline-flex items-center gap-4 rounded-full bg-brand px-8 py-4 font-ubuntu text-xl capitalize text-ink transition duration-300 hover:-translate-y-1 hover:bg-mint">
-            Send Message <span>✈</span>
-          </button>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <Field
+                  label="Your Name *"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="e.g. John Doe"
+                />
+                <Field
+                  label="Your Email *"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="e.g. john@example.com"
+                  type="email"
+                />
+              </div>
+
+              <div>
+                <Field
+                  label="Your Message *"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project or inquiry..."
+                  textarea
+                />
+              </div>
+
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="font-mono text-xs text-slate-400">
+                  Direct:{" "}
+                  <a
+                    href={`mailto:${data.email}`}
+                    className="text-brand hover:underline font-medium"
+                  >
+                    {data.email}
+                  </a>
+                </p>
+
+                <button
+                  type="submit"
+                  className="magnetic w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-7 py-3 font-ubuntu text-sm font-semibold text-night shadow-[0_0_20px_rgba(18,247,214,0.3)] transition hover:bg-mint hover:shadow-[0_0_30px_rgba(18,247,214,0.5)]"
+                >
+                  <span>Send Message</span>
+                  <span aria-hidden="true" className="text-base">✉</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </ScrollReveal>
       </div>
     </section>
@@ -81,19 +110,22 @@ export default function Contact({ data = fallbackPortfolio.contact }) {
 }
 
 function Field({ label, name, value, onChange, placeholder, type = "text", textarea = false }) {
-  const fieldClass = "w-full border-0 border-b border-white/70 bg-transparent px-0 py-3 font-ubuntu text-white outline-none placeholder:text-white/70 transition focus:border-brand focus:shadow-[0_10px_24px_rgba(18,247,214,0.08)]";
+  const inputClass =
+    "w-full rounded-xl border border-white/10 bg-night/80 px-4 py-3 font-ubuntu text-sm text-white placeholder:text-slate-400 outline-none transition focus:border-brand focus:ring-1 focus:ring-brand/40";
 
   return (
     <label className="block">
-      <span className="font-ubuntu text-brand">{label}</span>
+      <span className="font-mono text-xs uppercase tracking-wider text-brand font-semibold mb-2 block">
+        {label}
+      </span>
       {textarea ? (
         <textarea
           name={name}
           value={value}
           onChange={onChange}
-          rows="3"
+          rows="4"
           placeholder={placeholder}
-          className={`${fieldClass} resize-none`}
+          className={`${inputClass} resize-none`}
           required
         />
       ) : (
@@ -103,7 +135,7 @@ function Field({ label, name, value, onChange, placeholder, type = "text", texta
           onChange={onChange}
           type={type}
           placeholder={placeholder}
-          className={fieldClass}
+          className={inputClass}
           required
         />
       )}

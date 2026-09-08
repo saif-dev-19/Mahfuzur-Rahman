@@ -1,12 +1,12 @@
 export const assets = {
-  profile: "https://www.figma.com/api/mcp/asset/5bcaa207-a505-48e1-862d-78fa40eec198",
+  profile: "Pasted_image_CBbsJLq.png",
   about: "https://www.figma.com/api/mcp/asset/07e99988-3a10-4cfe-aa7c-822e18a56be0",
   aboutPhoto: "https://www.figma.com/api/mcp/asset/751de445-37bb-49e3-b646-a89ce6717174",
   skillsBg: "https://www.figma.com/api/mcp/asset/f9403f4d-0a2e-4947-b8be-b20f9aac4e30",
   worksBg: "https://www.figma.com/api/mcp/asset/acdab5a5-82d7-44f6-8de4-885ba4f61aff",
   workDevice: "https://www.figma.com/api/mcp/asset/7dcfb1d3-8781-4e9a-9039-da10fbc5d61e",
   workMobile: "https://www.figma.com/api/mcp/asset/36b5bdc3-8a39-4607-8d43-e25ce37f8904",
-  workDesktop: "https://www.figma.com/api/mcp/asset/b131adc7-a5ba-4a8d-866f-67a2a0ff02ef",
+  workDesktop: "https://www.figma.com/api/mcp/asset/b131ahttps://www.figma.com/api/mcp/asset/5bcaa207-a505-48e1-862d-78fa40eec198dc7-a5ba-4a8d-866f-67a2a0ff02ef",
   blog: "https://www.figma.com/api/mcp/asset/f144f177-1057-450c-a46f-793dff9b4e07",
 };
 

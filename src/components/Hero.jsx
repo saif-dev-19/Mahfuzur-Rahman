@@ -5,117 +5,154 @@ import TerminalWidget from "./TerminalWidget.jsx";
 
 export default function Hero({ data = fallbackPortfolio.hero }) {
   return (
-    <section id="home" className="relative overflow-hidden bg-ink/55 pb-12 md:pb-20">
-      <div className="absolute left-1/2 top-28 h-48 w-[70vw] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl" aria-hidden="true" />
+    <section id="home" className="relative pt-28 pb-20 md:pt-36 md:pb-28 bg-night">
       <div className="container-shell">
-        <ScrollReveal>
-          <h1 className="mb-8 text-center font-ubuntu text-5xl leading-tight text-mint md:mb-10 md:text-7xl">
-            <KineticWords text="" />
-          </h1>
-        </ScrollReveal>
+        <div className="grid items-start gap-10 lg:grid-cols-[330px_1fr_220px] xl:gap-14">
 
-        <div className="scene-3d grid items-center gap-10 lg:grid-cols-[330px_1fr_220px] xl:gap-20">
-          <ScrollReveal
-            as="aside"
-            variant="left"
-            className="hero-scan motion-card card-3d tilt-3d float-soft rounded-[42px] rounded-tl-[110px] border-2 border-white/85 bg-ink/95 p-5 shadow-glow md:p-6"
-          >
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="lift-3d relative">
-                <span className="absolute -inset-2 rounded-full border border-brand/60 shadow-[0_0_24px_rgba(18,247,214,0.24)]" />
-                <img src={data.image} alt="Profile" className="relative h-32 w-32 rounded-full object-cover md:h-36 md:w-36" />
+          {/* Left — Profile card */}
+          <ScrollReveal variant="left">
+            <aside className="card-clean p-6 sm:p-7 flex flex-col items-center text-center">
+              {/* Profile image with status ring */}
+              <div className="relative mb-4">
+                <div className="p-1 rounded-full bg-gradient-to-tr from-brand via-brand/40 to-transparent">
+                  <img
+                    src={data.image}
+                    alt={data.name}
+                    className="h-32 w-32 rounded-full object-cover bg-surface"
+                  />
+                </div>
+                <span className="absolute bottom-1 right-2 flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-75" />
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-brand border-2 border-night" />
+                </span>
               </div>
-              <div>
-                <h2 className="font-mono text-2xl font-medium leading-tight md:text-3xl">{data.name}</h2>
-                <p className="font-ubuntu text-md">{data.role}</p>
+
+              {/* Name & role */}
+              <h2 className="font-ubuntu text-2xl font-bold text-white leading-tight">
+                {data.name}
+              </h2>
+              <div className="mt-1.5 inline-flex items-center px-3 py-1 rounded-full bg-brand/10 border border-brand/25 text-brand font-mono text-xs font-medium">
+                {data.role}
               </div>
-            </div>
 
-            <dl className="mt-6 space-y-2.5 font-mono text-sm text-white">
-              {data.info.map((item) => (
-                <Info key={item.label} label={item.label} value={item.value} />
-              ))}
-            </dl>
-
-            <a href={data.cvUrl} className="magnetic button-3d mt-6 inline-flex items-center rounded-full bg-white px-5 py-3 font-ubuntu text-sm text-night transition hover:bg-brand">
-              Download CV ↓
-            </a>
-
-            <div className="mt-6 border-t border-white/15 pt-5">
-              <p className="text-center font-mono text-xs uppercase tracking-widest text-brand">Essential Links</p>
-              <div className="mt-4 flex justify-center gap-3">
-                {data.essentialLinks.map((link) => (
-                  <EssentialLink key={link.label} link={link} />
+              {/* Aligned Key-Value Info List */}
+              <div className="w-full border-y border-white/10 py-4 my-5 space-y-2.5">
+                {data.info.map((item) => (
+                  <div
+                    key={item.label}
+                    className="grid grid-cols-[72px_1fr] items-center text-left gap-2"
+                  >
+                    <span className="font-mono text-xs uppercase tracking-wider text-brand font-semibold">
+                      {item.label}
+                    </span>
+                    <span
+                      className="font-mono text-sm text-slate-100 font-medium break-all text-right"
+                      title={item.value}
+                    >
+                      {item.value}
+                    </span>
+                  </div>
                 ))}
               </div>
-            </div>
+
+              {/* Download CV button */}
+              <a
+                href={data.cvFile || data.cvUrl}
+                className="magnetic w-full inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-3 font-ubuntu text-sm font-semibold text-night transition hover:bg-mint hover:shadow-[0_0_20px_rgba(18,247,214,0.35)]"
+              >
+                <span>Download CV</span>
+                <span aria-hidden="true" className="text-base font-bold">↓</span>
+              </a>
+
+              {/* Social / Essential links */}
+              <div className="w-full mt-5 pt-4 border-t border-white/10">
+                <p className="font-mono text-xs uppercase tracking-widest text-slate-300 font-semibold mb-3">
+                  Connect & Socials
+                </p>
+                <div className="flex justify-center gap-2.5">
+                  {data.essentialLinks.map((link) => (
+                    <EssentialLink key={link.label} link={link} />
+                  ))}
+                </div>
+              </div>
+            </aside>
           </ScrollReveal>
 
-          <ScrollReveal className="mx-auto max-w-3xl" delay={150}>
-            <p className="font-mono text-sm text-brand">&lt;h1&gt;</p>
-            <div className="pl-4 md:pl-8">
-              <p className="hero-headline font-ubuntu text-3xl font-light leading-tight md:text-6xl">
-                <span className="hero-line">
-                  <KineticWords text="Hey" />
+          {/* Center — Main Hero Typography */}
+          <ScrollReveal delay={100} className="flex flex-col justify-center pt-2">
+            <p className="font-mono text-xs font-semibold uppercase tracking-widest text-brand/80 mb-2">
+              &lt;h1&gt;
+            </p>
+            <div className="pl-4 sm:pl-6 border-l-2 border-brand/30">
+              <h1 className="font-ubuntu text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.12] text-white tracking-tight">
+                <span className="block text-slate-300 font-light text-2xl sm:text-4xl lg:text-5xl mb-1">
+                  <KineticWords text="Hey," />
                 </span>
-                <span className="hero-line">
-                  <span>I&apos;m </span>
-                  <span className="text-brand">
+                <span className="block">
+                  I&apos;m{" "} Mahfuz
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand via-mint to-white">
                     <KineticWords text={data.headlineName} />
                   </span>
-                  <span>,</span>
                 </span>
-                <span className="hero-line type-caret">
+                <span className="block text-brand type-caret mt-2 font-mono text-xl sm:text-3xl lg:text-4xl font-medium">
                   <KineticWords text={data.headlineRole} />
                 </span>
-              </p>
+              </h1>
             </div>
-            <p className="font-mono text-sm text-brand">&lt;/h1&gt;</p>
+            <p className="font-mono text-xs font-semibold uppercase tracking-widest text-brand/80 mt-2">
+              &lt;/h1&gt;
+            </p>
 
-            <div className="mt-8 max-w-2xl font-mono text-sm leading-7 text-white/80 md:text-base">
-              <p className="text-brand">&lt;p&gt;</p>
-              <p className="flow-copy pl-4 md:pl-8">
-                {data.description}
-              </p>
-              <p className="text-brand">&lt;/p&gt;</p>
+            {/* Description - Large, crisp, and high contrast */}
+            <div className="mt-6 max-w-2xl font-ubuntu text-base sm:text-lg leading-relaxed text-slate-200 font-normal">
+              {data.description}
             </div>
 
+            {/* Terminal status widget */}
             <TerminalWidget />
 
-            <a href="#contact" className="magnetic group mt-8 inline-flex items-center gap-4 font-mono text-2xl capitalize text-brand transition hover:text-mint">
-              Let&apos;s Talk
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-steel text-lg text-brand transition group-hover:-translate-y-1 group-hover:bg-brand group-hover:text-ink">✉</span>
-            </a>
+            {/* Action buttons */}
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#contact"
+                className="magnetic inline-flex items-center gap-3 rounded-xl bg-brand px-7 py-3.5 font-ubuntu text-base font-semibold text-night shadow-[0_0_24px_rgba(18,247,214,0.3)] transition hover:bg-mint hover:shadow-[0_0_32px_rgba(18,247,214,0.45)] hover:-translate-y-0.5"
+              >
+                <span>Let&apos;s Talk</span>
+                <span aria-hidden="true" className="text-lg">✉</span>
+              </a>
+              <a
+                href="#projects"
+                className="magnetic inline-flex items-center gap-2 rounded-xl border border-white/20 bg-surface px-6 py-3.5 font-ubuntu text-base font-medium text-white transition hover:border-brand hover:text-brand hover:bg-brand/5"
+              >
+                <span>View Projects</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </ScrollReveal>
 
-          <ScrollReveal
-            variant="right"
-            delay={220}
-            className="card-3d card-3d--right tilt-3d marquee-surface mx-auto flex w-full max-w-xs flex-col gap-8 rounded-[80px] border border-white/10 bg-night/90 px-8 py-10 shadow-glow backdrop-blur"
-          >
-            {data.stats.map((stat, index) => (
-              <div key={stat.label} className="group flex items-center gap-4">
-                <span className="font-mono text-5xl font-medium text-brand">{stat.value}</span>
-                <span className="font-mono text-sm leading-5 text-white transition group-hover:text-mint">{stat.label}</span>
-                <span
-                  className="ml-auto h-2 w-2 rounded-full bg-brand pulse-dot"
-                  style={{ animationDelay: `${index * 180}ms` }}
-                />
-              </div>
-            ))}
+          {/* Right — Stats */}
+          <ScrollReveal variant="right" delay={200}>
+            <div className="flex flex-col gap-4">
+              {data.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="card-clean p-5 relative overflow-hidden group border border-white/10"
+                >
+                  <div className="absolute top-0 left-0 w-1.5 h-full bg-brand/50 group-hover:bg-brand transition-colors" />
+                  <span className="font-mono text-4xl sm:text-5xl font-bold text-brand block leading-none">
+                    {stat.value}
+                  </span>
+                  <span className="font-ubuntu text-sm sm:text-base text-slate-200 mt-2 font-medium block leading-snug">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </ScrollReveal>
+
         </div>
       </div>
     </section>
-  );
-}
-
-function Info({ label, value }) {
-  return (
-    <div className="flex items-start gap-3">
-      <dt className="min-w-16 text-brand">{label}</dt>
-      <dd className="text-white/80">{value}</dd>
-    </div>
   );
 }
 
@@ -127,7 +164,7 @@ function EssentialLink({ link }) {
       title={link.label}
       target={link.href !== "#" ? "_blank" : undefined}
       rel={link.href !== "#" ? "noreferrer" : undefined}
-      className="magnetic grid h-10 w-10 place-items-center rounded-full bg-white transition hover:-translate-y-0.5 hover:bg-mint"
+      className="magnetic grid h-10 w-10 place-items-center rounded-xl bg-surface border border-white/15 transition hover:border-brand hover:bg-brand/10 hover:-translate-y-0.5"
     >
       <EssentialIcon icon={link.icon} color={link.color} />
     </a>
@@ -151,7 +188,7 @@ function EssentialIcon({ icon, color }) {
   };
 
   return (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" fill={color} aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-5 w-5" fill={color || "#FFFFFF"} aria-hidden="true">
       {icons[icon] || icons.github}
     </svg>
   );

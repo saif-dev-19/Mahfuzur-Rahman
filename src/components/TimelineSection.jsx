@@ -1,57 +1,72 @@
 import SectionTitle from "./SectionTitle.jsx";
 import ScrollReveal from "./ScrollReveal.jsx";
 
-export default function TimelineSection({ id, title, description, eyebrow, items, variant = "role", dark = false }) {
+export default function TimelineSection({
+  id,
+  title,
+  description,
+  eyebrow,
+  items,
+  variant = "role",
+  dark = false,
+}) {
   return (
-    <section id={id} className={`${dark ? "bg-night/82" : "bg-ink/78"} section-pad`}>
+    <section id={id} className={`${dark ? "bg-night" : "bg-ink"} section-pad`}>
       <div className="container-shell">
         <SectionTitle title={title}>{description}</SectionTitle>
 
-        <div className="scene-3d mx-auto mt-12 max-w-5xl">
-          <ScrollReveal className="card-3d relative rounded-[40px] border border-white/10 bg-night/70 p-6 shadow-glow md:p-10">
-            <div className="mb-7 flex items-center justify-between gap-6">
-              <div>
-                <p className="font-mono text-sm uppercase tracking-widest text-brand">{eyebrow}</p>
-                <h3 className="mt-2 font-ubuntu text-3xl text-white md:text-4xl">{title}</h3>
-              </div>
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border border-brand text-2xl text-brand">
-                &lt;/&gt;
-              </span>
-            </div>
+        <div className="mx-auto mt-14 max-w-3xl">
+          {/* Timeline */}
+          <div className="relative pl-8 space-y-6 before:absolute before:left-3 before:top-1 before:h-[calc(100%-0.5rem)] before:w-px before:bg-white/10">
+            {items.map((item, index) => (
+              <ScrollReveal
+                as="article"
+                key={`${item.period}-${item.company || item.school || item.issuer}`}
+                delay={index * 100}
+                variant="lift"
+                className="relative"
+              >
+                {/* Timeline dot with glowing ring */}
+                <span className="absolute -left-8 top-5 flex h-6 w-6 items-center justify-center rounded-full border border-brand/50 bg-night">
+                  <span className="h-2 w-2 rounded-full bg-brand" />
+                </span>
 
-            <div className="relative space-y-5 before:absolute before:left-4 before:top-2 before:h-[calc(100%-1rem)] before:w-px before:bg-brand/40">
-              {items.map((item, index) => (
-                <ScrollReveal
-                  as="article"
-                  key={`${item.period}-${item.company || item.school || item.issuer}`}
-                  className="relative pl-12"
-                  delay={index * 110}
-                  variant="right"
-                >
-                  <span className="absolute left-0 top-2 grid h-8 w-8 place-items-center rounded-full border-2 border-brand bg-ink">
-                    <span className="h-2.5 w-2.5 rounded-full bg-brand pulse-dot" />
-                  </span>
+                <div className="card-clean p-6 sm:p-7 border border-white/10">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span className="font-mono text-xs font-semibold text-brand bg-brand/10 border border-brand/20 px-3 py-1 rounded-md">
+                      {item.period}
+                    </span>
+                    <span className="font-mono text-xs font-medium text-slate-300">
+                      {getLocation(item)}
+                    </span>
+                  </div>
 
-                  <div className="motion-card card-3d card-3d--right rounded-br-[24px] rounded-tl-[24px] border border-white/10 bg-ink p-5">
-                    <p className="font-mono text-sm text-brand">{item.period}</p>
-                    <h4 className="mt-2 font-ubuntu text-2xl leading-tight text-white md:text-3xl">
-                      {getTitle(item, variant)}
-                    </h4>
-                    <p className="mt-2 font-mono text-sm text-mint">{getMeta(item, variant)}</p>
-                    <p className="mt-4 font-ubuntu text-sm leading-6 text-white/80 md:text-base">{item.description}</p>
+                  <h4 className="font-ubuntu text-xl sm:text-2xl font-bold leading-tight text-white">
+                    {getTitle(item, variant)}
+                  </h4>
+                  <p className="mt-1 font-mono text-sm text-brand font-medium">
+                    {getMeta(item, variant)}
+                  </p>
+                  <p className="mt-3.5 font-ubuntu text-base leading-relaxed text-slate-200">
+                    {item.description}
+                  </p>
 
+                  {item.tags?.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
                       {item.tags.map((tag) => (
-                        <span key={tag} className="chip-3d rounded-full bg-steel px-3 py-1 font-mono text-xs text-white">
+                        <span
+                          key={tag}
+                          className="rounded-md bg-white/[0.06] px-2.5 py-1 font-mono text-xs font-medium text-slate-200 border border-white/10"
+                        >
                           {tag}
                         </span>
                       ))}
                     </div>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </ScrollReveal>
+                  )}
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -68,4 +83,8 @@ function getMeta(item, variant) {
   if (variant === "education") return `${item.school} · ${item.location}`;
   if (variant === "certificate") return `${item.issuer} · ${item.credential}`;
   return `${item.company} · ${item.location}`;
+}
+
+function getLocation(item) {
+  return item.location || "";
 }

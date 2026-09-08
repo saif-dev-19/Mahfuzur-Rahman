@@ -20,12 +20,13 @@ export const fallbackPortfolio = {
     headlineRole: "Backend Developer",
     description:
       "I help businesses grow by crafting amazing web experiences. If you're looking for a developer who likes to get stuff done, let's talk.",
-    image: assets.profile,
-    cvUrl: "#contact",
+    image: "media/about/Pasted_image_CBbsJLq.png",
+    cvUrl: "https://drive.google.com/file/d/1kcqvGBzGloaAs17sjWm9JcJwcn5y6qu9/view?usp=drive_link",
+    cvFile: "https://drive.google.com/file/d/1kcqvGBzGloaAs17sjWm9JcJwcn5y6qu9/view?usp=drive_link",
     info: [
       { label: "Email", value: "mahfujurrahmansaif@gmail.com" },
       { label: "Location", value: "Bangladesh" },
-      { label: "Work", value: "Onsite" },
+      { label: "Work", value: "Onsite/Remote" },
       { label: "Link", value: "www.mahfuz.live" },
     ],
     stats,
