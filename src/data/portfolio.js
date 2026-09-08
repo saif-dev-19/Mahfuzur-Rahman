@@ -28,10 +28,10 @@ export const socialLinks = [
 ];
 
 export const essentialLinks = [
-  { label: "GitHub", href: "#", icon: "github", color: "#181717" },
-  { label: "LinkedIn", href: "#", icon: "linkedin", color: "#0A66C2" },
-  { label: "LeetCode", href: "#", icon: "leetcode", color: "#FFA116" },
-  { label: "Codeforces", href: "#", icon: "codeforces", color: "#1F8ACB" },
+  { label: "GitHub", href: "https://github.com/saif-dev-19", icon: "github", color: "#181717" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/mahfuzur-rahman-saif/", icon: "linkedin", color: "#0A66C2" },
+  { label: "LeetCode", href: "https://leetcode.com/u/Mahfuz_saif/", icon: "leetcode", color: "#FFA116" },
+  { label: "Codeforces", href: "https://codeforces.com/profile/Mahfuz_Saif", icon: "codeforces", color: "#1F8ACB" },
 ];
 
 export const contactEmail = "mahfujurrahmansaif@gmail.com";
