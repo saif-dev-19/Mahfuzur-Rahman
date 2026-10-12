@@ -10,7 +10,7 @@ import {
   stats,
 } from "../data/portfolio.js";
 
-const API_BASE_URL = import.meta.env.VITE_PORTFOLIO_API_URL ||"http://127.0.0.1:8000/api/portfolio";
+const API_BASE_URL = import.meta.env.VITE_PORTFOLIO_API_URL ||"https://web-production-fe170.up.railway.app/api/portfolio";
 
 export const fallbackPortfolio = {
   hero: {
@@ -118,7 +118,7 @@ function mapHero(hero) {
     headlineRole: hero.headline_role || hero.role || fallbackPortfolio.hero.headlineRole,
     description: hero.description || fallbackPortfolio.hero.description,
     image: hero.image || fallbackPortfolio.hero.image,
-    cvUrl: hero.cv_file || hero.cv_url,
+    cvUrl: hero.cv_url ||hero.cv_file ,
     info: Array.isArray(hero.info) ? hero.info : fallbackPortfolio.hero.info,
     stats: Array.isArray(hero.stats) ? hero.stats : fallbackPortfolio.hero.stats,
     essentialLinks: Array.isArray(hero.essential_links) ? hero.essential_links : fallbackPortfolio.hero.essentialLinks,
