@@ -10,7 +10,7 @@ import {
   stats,
 } from "../data/portfolio.js";
 
-const API_BASE_URL = import.meta.env.VITE_PORTFOLIO_API_URL || "https://web-production-fe170.up.railway.app/api/portfolio";
+const API_BASE_URL = import.meta.env.VITE_PORTFOLIO_API_URL ||"http://127.0.0.1:8000/api/portfolio";
 
 export const fallbackPortfolio = {
   hero: {
@@ -21,8 +21,8 @@ export const fallbackPortfolio = {
     description:
       "I help businesses grow by crafting amazing web experiences. If you're looking for a developer who likes to get stuff done, let's talk.",
     image: "media/about/Pasted_image_CBbsJLq.png",
-    cvUrl: "https://drive.google.com/file/d/1kcqvGBzGloaAs17sjWm9JcJwcn5y6qu9/view?usp=drive_link",
-    cvFile: "https://drive.google.com/file/d/1kcqvGBzGloaAs17sjWm9JcJwcn5y6qu9/view?usp=drive_link",
+    cvUrl: "https://drive.google.com/file/d/1QOkIFMfBqPpRiRXYIflqIZRr6w1J0h9s/view?usp=drive_link",
+    cvFile: "",
     info: [
       { label: "Email", value: "mahfujurrahmansaif@gmail.com" },
       { label: "Location", value: "Bangladesh" },
@@ -118,7 +118,7 @@ function mapHero(hero) {
     headlineRole: hero.headline_role || hero.role || fallbackPortfolio.hero.headlineRole,
     description: hero.description || fallbackPortfolio.hero.description,
     image: hero.image || fallbackPortfolio.hero.image,
-    cvUrl: hero.cv_file || hero.cv_url || fallbackPortfolio.hero.cvUrl,
+    cvUrl: hero.cv_file || hero.cv_url,
     info: Array.isArray(hero.info) ? hero.info : fallbackPortfolio.hero.info,
     stats: Array.isArray(hero.stats) ? hero.stats : fallbackPortfolio.hero.stats,
     essentialLinks: Array.isArray(hero.essential_links) ? hero.essential_links : fallbackPortfolio.hero.essentialLinks,
